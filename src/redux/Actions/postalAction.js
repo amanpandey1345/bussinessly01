@@ -3,14 +3,17 @@ import axios from "axios";
 
 
 
-// export const getPostalApi = createAsyncThunk(
-//     "postal/getapi",
-//     async({pincode},{rejectWithValue})=>{
+export const getPostalApi = createAsyncThunk(
+    "postal/getPostalApi",
+    async(pincode,{rejectWithValue})=>{
 
-//         try {
-//             const {data} = await axios.get(`https://api.postalpincode.in/pincode/${pincode}`)
-//         } catch (error) {
-            
-//         }
-//     }
-// )
+        // console.log(pincode);
+
+        try {
+            const {data} = await axios.get(`https://api.postalpincode.in/pincode/${pincode}`)
+            return data
+        } catch (error) {
+            rejectWithValue(error.message)
+        }
+    }
+)

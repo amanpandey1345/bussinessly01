@@ -5,6 +5,8 @@ import Articals from "./Articals";
 // import { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment } from "../redux/ReduxSlice/Counter.Slice";
+import { useState } from "react";
+import { getPostalApi } from "../redux/Actions/postalAction";
 
 
 
@@ -13,7 +15,10 @@ import { decrement, increment } from "../redux/ReduxSlice/Counter.Slice";
 const Home = () => {
   const dispatch = useDispatch();
 
+  const [pincode, setPincode] = useState()
+  console.log(pincode);
   const { value } = useSelector(state=> state.counter);
+  const { data,errorMessage,isSuccess,isLoading } = useSelector(state=> state.postal);  
   return (
     <>
       <div className="flex items-center justify-center w-full">
@@ -21,6 +26,22 @@ const Home = () => {
 
         <button className="px-5 py-2 text-center bg-green-500" onClick={()=>dispatch(increment())}>+</button>
         <button className="px-5 py-2 bg-red-500" onClick={()=> dispatch(decrement())}>-</button>
+      </div>
+      
+      <div className="flex flex-col items-center justify-center w-full h-auto min-h-screen bg-slate-300">
+        <input type="number" className="w-1/2 p-2" onChange={(e)=>setPincode(e.target.value) } />
+        <button className="p-4 bg-green-600 "  onClick={()=> dispatch(getPostalApi(pincode))}>Get Post Office</button>
+        <div className="w-full h-auto mt-10">
+          
+          {
+            !isLoading &&
+          JSON.stringify(data)
+          }
+          {
+            isLoading &&
+          <h1 className="text-3xl "> Loading</h1>
+          }
+        </div>
       </div>
 
       <div className="w-full flex flex-col items-center gap-y-[50px] bg-gray-100 md:relative ">
