@@ -2,7 +2,9 @@ import React from 'react'
 
 const Hearo = () => {
   return (
-    <div>Hearo</div>
+    <div>
+      
+    </div>
   )
 }
 
