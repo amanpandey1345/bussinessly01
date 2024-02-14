@@ -6,6 +6,7 @@ import {
   registerApi,
 } from "../redux/Actions/userAction";
 import { useEffect, useState } from "react";
+import {  Link, useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const { isAuth, User, isLoading, errorMessage } = useSelector((state) => state.auth);
@@ -14,9 +15,8 @@ const Hero = () => {
   const [image, setImage] = useState("");
   const [imgs, setImgs] = useState("");
 
-  useEffect(() => {
-    dispatch(getUserApi());
-  }, [dispatch]);
+  const navigate= useNavigate()
+
 
   const handleSub = (e) => {
     e.preventDefault();
@@ -40,6 +40,7 @@ const Hero = () => {
     const password = e.target[1].value;
 
     dispatch(logInApi({ email, password }));
+    navigate("/")
   };
 
   const handleImage = (e) => {
@@ -56,6 +57,7 @@ const Hero = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen gap-5">
+      <Link to={"/articlepage"}>/articlepage</Link>
       {
         isLoading && <h1 className="p-2 text-4xl text-red-500 bg-yellow-200">
         Loading....</h1>

@@ -1,14 +1,24 @@
 import React from 'react'
 import { Form } from 'react-router-dom'
+import { logOutApi } from '../redux/Actions/userAction'
+import { useDispatch } from 'react-redux'
 
 const ArticlePage = () => {
+  
+  const dispatch = useDispatch()
   return (
     <>
-      <article className='flex flex-col h-auto w-full'>
-        <header className=" text-black p-4 m-5">
+     <button
+              onClick={() => dispatch(logOutApi())}
+              className="px-4 py-2 bg-red-500"
+            >
+              Logout
+            </button>
+      <article className='flex flex-col w-full h-auto'>
+        <header className="p-4 m-5 text-black ">
           <h1 className="text-[15px] ">✨Member-only story</h1>
           <h1 className="text-4xl font-extrabold text-center "> This is the Word I’m Trying to Live </h1>
-          <h1 className="text-4xl font-extrabold text-center  ">By This Year</h1>
+          <h1 className="text-4xl font-extrabold text-center ">By This Year</h1>
         </header>
         <center>
           <img
@@ -17,7 +27,7 @@ const ArticlePage = () => {
             className="w-[800px] h-[500px] object-cover "
           />
         </center>
-        <div className="w-full  h-auto flex justify-center">
+        <div className="flex justify-center w-full h-auto">
           <div className="w-[60%] h-auto  text-[18px] font-[500] font-serif">
             <h1 className='mb-[20px] p-[10px]'>The past year has been all about LESS for me.</h1>
             <p className='pb-[30px] mt-[20px]'>At the end of 2022, my wife and I picked a word we were going to use as our lodestar for the year. We picked ‘less’ because we felt like we were too busy, too overwhelmed, too stressed, too frustrated. I was just exhausted as December ended and I felt like my health, my family, and my quality of life could not face another year of the same.</p>
@@ -34,26 +44,26 @@ const ArticlePage = () => {
             <p className='pb-[30px] mt-[20px] opacity-60'>“Never bring me a sealed envelope,” Eisenhower said firmly. “That’s what I have a staff for.”</p>
           </div>
         </div>
-        <div className="w-full  h-auto flex justify-center">
+        <div className="flex justify-center w-full h-auto">
           <div className="w-[50%] h-auto  text-[16px] font-[200] font-serif">
-            <h1 className='text-4xl font-extrabold text-center  mb-6 mt-4'>Create an account to read the full story.</h1>
+            <h1 className='mt-4 mb-6 text-4xl font-extrabold text-center'>Create an account to read the full story.</h1>
             <p>The author made this story available to Medium members only.
               If you're new to Medium, create a new account to read this story on us.</p>
 
-            <div className="max-w-md mx-auto mt-8 p-6 rounded-md ">
+            <div className="max-w-md p-6 mx-auto mt-8 rounded-md ">
               <form >
                 <input className="w-full px-3 py-3 m-3 border rounded-md " type="text" placeholder='Signup With Google' />
-                <input className="w-full px-3 py-2 m-3  border rounded-md  " type="text" placeholder='Signup With Facebook' />
-                <input className="w-full px-3 py-2  m-3 border rounded-md  " type="text" placeholder='Signup With Facebook' />
+                <input className="w-full px-3 py-2 m-3 border rounded-md " type="text" placeholder='Signup With Facebook' />
+                <input className="w-full px-3 py-2 m-3 border rounded-md " type="text" placeholder='Signup With Facebook' />
                 <h1 className='p-3'>Already have an account? Sign in</h1>
               </form>
             </div>
           </div >
         </div >
-        <div className="w-full  h-auto flex justify-center">
+        <div className="flex justify-center w-full h-auto">
           <div className="w-[50%] h-auto  text-[18px] font-[500] font-serif">
             <img src="https://ryanholiday.medium.com/?source=post_page-----3cf185518568--------------------------------" alt="" className='rounded-full' />
-            <h1 className='text-2xl font-extrabold text-center  mb-6 mt-4'>Written by Ryan Holiday
+            <h1 className='mt-4 mb-6 text-2xl font-extrabold text-center'>Written by Ryan Holiday
             </h1>
           </div>
         </div>
