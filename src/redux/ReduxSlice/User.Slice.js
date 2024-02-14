@@ -1,14 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 // import { CreateBlogApi, getBlogApi } from "../Actions/BlogAction";
-import { getUserApi, logInApi, logOutApi } from "../Actions/userAction";
+import { getUserApi, logInApi, logOutApi, registerApi } from "../Actions/userAction";
 
 
 const initialState = {
     User:{},
-    isLoading:false,
+    isLoading:false, 
     isAuth:false,
     isSuccess:false,
-    errorMessage:""
+    errorMessage:"",  
+    isRegisterSuccess:false,
 }
 
 const authSlice = createSlice({
@@ -34,7 +35,7 @@ const authSlice = createSlice({
         }),
         builder.addCase(logInApi.fulfilled,(state,{payload})=>{
             state.isLoading= false;
-            state.isSuccess= true;
+            state.isSuccess= true; 
             state.isAuth= payload.success;
             state.User= payload;
         }),
@@ -55,6 +56,18 @@ const authSlice = createSlice({
         builder.addCase(logOutApi.rejected,(state,{payload})=>{
             state.isLoading= false;
             state.isSuccess= false;
+            state.errorMessage = payload;
+        })
+        builder.addCase(registerApi.pending,(state)=>{
+            state.isLoading = true;
+        }),
+        builder.addCase(registerApi.fulfilled,(state,{payload})=>{
+            state.isLoading= false;
+            state.isRegisterSuccess= true;
+        }),
+        builder.addCase(registerApi.rejected,(state,{payload})=>{
+            state.isLoading= false;
+            state.isRegisterSuccess = false;
             state.errorMessage = payload;
         })
     }
