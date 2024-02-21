@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOutApi } from "../redux/Actions/userAction";
 import { Link } from "react-router-dom";
 
-const Hearo = () => {
+const Profile = () => {
   const { isAuth, User, isLoading, errorMessage } = useSelector(
     (state) => state.auth
   );
@@ -11,9 +11,6 @@ const Hearo = () => {
   const dispatch = useDispatch();
   return (
     <div className="flex items-center justify-center w-full h-screen flex-col">
-              <Link to={"/articlepage"} className=" p-2 bg-blue-400">/articlepage</Link>
-      <Link to={"/dashboard"}  className=" p-2 bg-yellow-400">Dashboard</Link> 
-      <Link to={"/accounts"}  className=" p-2 bg-green-400">Accounts</Link> 
       {isAuth && (
         <>
           <div className="flex flex-col w-1/3 gap-2 p-4 bg-red-400 item-center registers h-[400px]">
@@ -58,4 +55,4 @@ const Hearo = () => {
   );
 };
 
-export default Hearo;
+export default Profile;

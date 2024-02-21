@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbarr = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,9 @@ const Navbarr = () => {
     <nav className="bg-gray-300 shadow-lg mb-[80px] ">
       <div className="flex items-center justify-between w-full min-h-[45px] p-3">
         <span className='hidden md:block'>🔍</span>
+        <a href={"/"}>
         <h2 className='text-2xl font-extrabold'>Businessly</h2>
+        </a>
         <button className='hidden px-4 py-1 text-xs border border-black hover:bg-orange-300 hover:text-white md:block'>Subscribe</button>
       </div >
       <div className="flex items-center  justify-between h-16">

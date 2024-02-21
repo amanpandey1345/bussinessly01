@@ -57,7 +57,8 @@ const Hero = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen gap-5">
-      <Link to={"/articlepage"}>/articlepage</Link>
+      <Link to={"/articlepage"} className=" p-2 bg-blue-400">/articlepage</Link>
+      <Link to={"/dashboard"}>Dashboard</Link>    
       {
         isLoading && <h1 className="p-2 text-4xl text-red-500 bg-yellow-200">
         Loading....</h1>
